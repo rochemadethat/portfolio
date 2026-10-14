@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>roche sacks // portfolio</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Geist Mono / JetBrains Mono look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        am: {
+                            bg: '#ffffff',
+                            subtle: '#f8f8f9',
+                            card: '#ffffff',
+                            border: '#e5e5e7',
+                            borderHover: '#000000',
+                            muted: '#71717a',
+                            text: '#09090b',
+                            accent: '#000000'
+                        }
+                    },
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'Courier', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #09090b;
+            font-family: 'JetBrains Mono', Courier, monospace;
+        }
+
+        /* Clean subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d4d4d8;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #000000;
+        }
+
+        /* Minimal hover effects */
+        .am-btn {
+            transition: all 0.15s ease;
+        }
+        .am-btn:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .tag-bracket {
+            letter-spacing: -0.02em;
+        }
+    </style>
+</head>
+<body class="bg-white text-am-text font-mono min-h-screen flex flex-col justify-between selection:bg-black selection:text-white antialiased relative">
+
+    <!-- TOP STICKY NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-am-border px-4 md:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+            
+            <!-- Left Side Bracket Navigation -->
+            <nav class="flex flex-wrap items-center gap-2 text-xs">
+                <button onclick="filterCategory('all')" id="nav-all" class="nav-btn border border-black bg-black text-white px-3 py-1 font-medium transition-all">
+                    [work]
+                </button>
+                <button onclick="openModal('about-modal')" class="border border-am-border hover:border-black text-am-text px-3 py-1 transition-all bg-white">
+                    [about]
+                </button>
+                <button onclick="openModal('contact-modal')" class="border border-am-border hover:border-black text-am-text px-3 py-1 transition-all bg-white">
+                    [contact me]
+                </button>
+            </nav>
+
+            <!-- Right Side Branding & Meta Tag -->
+            <div class="flex flex-wrap items-center gap-2 text-xs md:text-right">
+                <span class="font-bold tracking-tight uppercase text-black">
+                    roche sacks 2026 ©
+                </span>
+                <span class="text-am-muted hidden sm:inline">|</span>
+                <span class="text-am-muted uppercase text-[11px] tracking-tight">videography | editing | creative direction</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 md:px-8 py-6 md:py-10 flex-grow w-full space-y-12">
+
+        <!-- HERO DEMO REEL BANNER (STARK WHITE 16:9 FRAME) -->
+        <section class="border border-black bg-white overflow-hidden relative shadow-sm">
+            <div class="p-3 border-b border-black bg-am-subtle flex flex-wrap justify-between items-center gap-3 text-xs">
+                <div class="flex items-center gap-2">
+                    <span class="inline-block w-2 h-2 bg-black rounded-full animate-pulse"></span>
+                    <span class="font-bold uppercase tracking-wider text-[11px]">// FEATURED DEMO REEL</span>
+                    <span class="text-am-muted text-[11px] hidden sm:inline-block">| VIMEO DIRECTORIAL DISPLAY</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="openModal('vimeo-modal')" class="border border-black hover:bg-black hover:text-white bg-white text-black px-2.5 py-0.5 text-[11px] transition-all flex items-center gap-1 font-mono">
+                        <i class="fa-solid fa-sliders text-[9px]"></i> [edit vimeo reel]
+                    </button>
+                </div>
+            </div>
+
+            <!-- Vimeo Video Frame -->
+            <div class="relative w-full aspect-video bg-black flex items-center justify-center overflow-hidden">
+                <iframe id="vimeo-player" 
+                        src="https://player.vimeo.com/video/76979871?autoplay=0&loop=1&title=0&byline=0&portrait=0" 
+                        class="w-full h-full border-0" 
+                        allow="autoplay; fullscreen; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="p-3.5 bg-white border-t border-black flex flex-col md:flex-row justify-between items-start md:items-center gap-2 text-xs">
+                <div class="text-black text-[11px]">
+                    <strong>ROCHE SACKS DIRECTORIAL REEL 2026</strong> — COMMERCIAL, GOVERNMENT, INFLUENCER &amp; BRANDED CONTENT.
+                </div>
+                <div class="text-am-muted text-[10px] uppercase tracking-wider">
+                    CLIENTS: U.S. DEPT OF STATE • REFINERY29 • INFLUENCERS
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY FILTERS & CONTENT -->
+        <section class="space-y-8">
+            
+            <!-- Category Filter Sub-Header -->
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-am-border pb-3 text-xs">
+                <div class="flex items-center gap-2">
+                    <span class="text-am-muted uppercase">// FILTER CATEGORY:</span>
+                    <button onclick="filterCategory('all')" id="filter-all" class="filter-tab font-bold text-black border-b-2 border-black pb-0.5">[ALL]</button>
+                    <button onclick="filterCategory('shortform')" id="filter-shortform" class="filter-tab text-am-muted hover:text-black pb-0.5">[SHORT FORM]</button>
+                    <button onclick="filterCategory('longform')" id="filter-longform" class="filter-tab text-am-muted hover:text-black pb-0.5">[LONGFORM &amp; SERIES]</button>
+                    <button onclick="filterCategory('photo')" id="filter-photo" class="filter-tab text-am-muted hover:text-black pb-0.5">[PHOTOGRAPHY]</button>
+                </div>
+
+                <div class="text-am-muted text-[11px]">
+                    <button onclick="resetAllThumbnails()" class="text-am-muted hover:text-black transition-colors uppercase border border-am-border hover:border-black bg-am-subtle px-2 py-0.5">
+                        [reset thumbnails]
+                    </button>
+                </div>
+            </div>
+
+            <!-- 1. SHORT FORM SECTION -->
+            <div class="space-y-4 cat-section" id="section-shortform">
+                <div class="text-xs font-bold uppercase tracking-wider text-black border-l-2 border-black pl-2">
+                    01 // SHORT FORM
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+                    
+                    <!-- P1: Refinery29 Premiere -->
+                    <article class="project-card group border border-am-border hover:border-black bg-white overflow-hidden transition-all duration-200 flex flex-col justify-between" data-category="shortform" data-project-id="p1">
+                        <div>
+                            <div class="relative aspect-video bg-gray-100 overflow-hidden group/thumb">
+                                <img id="thumb-p1" src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80" alt="Refinery29 Movie Premiere" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                
+                                <button onclick="openSwapThumbnailModal('p1', 'Refinery29 - Movie Premiere')" class="absolute top-2 right-2 opacity-0 group-hover/thumb:opacity-100 transition-opacity z-20 bg-black text-white text-[10px] font-mono px-2 py-0.5 border border-black">
+                                    [edit thumbnail]
+                                </button>
+
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
+                                    <button onclick="openExternalMediaModal('https://www.instagram.com/refinery29/reel/DQ-PF6-Ce0J/', 'Refinery29 - Movie Premiere (TikTok/IG)')" class="w-10 h-10 rounded-full bg-white text-black border border-black flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all">
+                                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 border-t border-am-border">
+                                <div class="text-[10px] text-am-muted mb-1 uppercase tracking-wider">Refinery29</div>
+                                <h3 class="text-sm font-bold text-black mb-2 uppercase tracking-tight">
+                                    Now You See Me Now You Don't Movie Premiere
+                                </h3>
+                                <div class="text-[11px] text-black font-semibold">
+                                    VIDEO EDITOR
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 pt-0 flex justify-between items-center text-xs border-t border-am-border/60 pt-2.5 mt-auto">
+                            <span class="text-am-muted text-[10px]">TIKTOK / IG REEL</span>
+                            <a href="https://www.instagram.com/refinery29/reel/DQ-PF6-Ce0J/" target="_blank" rel="noopener" class="text-black font-bold hover:underline flex items-center gap-1 font-mono text-[10px] uppercase">
+                                [open link] <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- P2: Refinery29 Look Book -->
+                    <article class="project-card group border border-am-border hover:border-black bg-white overflow-hidden transition-all duration-200 flex flex-col justify-between" data-category="shortform" data-project-id="p2">
+                        <div>
+                            <div class="relative aspect-video bg-gray-100 overflow-hidden group/thumb">
+                                <img id="thumb-p2" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="R29 Winter Look Book" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                
+                                <button onclick="openSwapThumbnailModal('p2', 'Refinery29 - Winter Look Book')" class="absolute top-2 right-2 opacity-0 group-hover/thumb:opacity-100 transition-opacity z-20 bg-black text-white text-[10px] font-mono px-2 py-0.5 border border-black">
+                                    [edit thumbnail]
+                                </button>
+
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
+                                    <button onclick="openExternalMediaModal('https://www.instagram.com/refinery29/reel/DSGVNa3iWJT/', 'Refinery29 - Winter Look Book R29 Series')" class="w-10 h-10 rounded-full bg-white text-black border border-black flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all">
+                                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 border-t border-am-border">
+                                <div class="text-[10px] text-am-muted mb-1 uppercase tracking-wider">Refinery29</div>
+                                <h3 class="text-sm font-bold text-black mb-2 uppercase tracking-tight">
+                                    R29 Winter Look Book R29 Series
+                                </h3>
+                                <div class="text-[11px] text-black font-semibold">
+                                    COLORIST
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 pt-0 flex justify-between items-center text-xs border-t border-am-border/60 pt-2.5 mt-auto">
+                            <span class="text-am-muted text-[10px]">YOUTUBE / IG</span>
+                            <a href="https://www.instagram.com/refinery29/reel/DSGVNa3iWJT/" target="_blank" rel="noopener" class="text-black font-bold hover:underline flex items-center gap-1 font-mono text-[10px] uppercase">
+                                [open link] <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- P3: Roland Holy Trinity -->
+                    <article class="project-card group border border-am-border hover:border-black bg-white overflow-hidden transition-all duration-200 flex flex-col justify-between" data-category="shortform" data-project-id="p3">
+                        <div>
+                            <div class="relative aspect-video bg-gray-100 overflow-hidden group/thumb">
+                                <img id="thumb-p3" src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80" alt="Roland Holy Trinity" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                
+                                <button onclick="openSwapThumbnailModal('p3', 'Roland Holy Trinity (@titaniumdice)')" class="absolute top-2 right-2 opacity-0 group-hover/thumb:opacity-100 transition-opacity z-20 bg-black text-white text-[10px] font-mono px-2 py-0.5 border border-black">
+                                    [edit thumbnail]
+                                </button>
+
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
+                                    <button onclick="openExternalMediaModal('https://www.instagram.com/nite.skooled/reel/DRVGcMjAc9G/', 'Roland Holy Trinity (@titaniumdice)')" class="w-10 h-10 rounded-full bg-white text-black border border-black flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all">
+                                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 border-t border-am-border">
+                                <div class="text-[10px] text-am-muted mb-1 uppercase tracking-wider">Influencer Collab</div>
+                                <h3 class="text-sm font-bold text-black mb-2 uppercase tracking-tight">
+                                    Roland Holy Trinity (@titaniumdice)
+                                </h3>
+                                <div class="text-[11px] text-black font-semibold">
+                                    VIDEO EDITOR
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 pt-0 flex justify-between items-center text-xs border-t border-am-border/60 pt-2.5 mt-auto">
+                            <span class="text-am-muted text-[10px]">TIKTOK / IG</span>
+                            <a href="https://www.instagram.com/nite.skooled/reel/DRVGcMjAc9G/" target="_blank" rel="noopener" class="text-black font-bold hover:underline flex items-center gap-1 font-mono text-[10px] uppercase">
+                                [open link] <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- P4: Yamaha R1M -->
+                    <article class="project-card group border border-am-border hover:border-black bg-white overflow-hidden transition-all duration-200 flex flex-col justify-between" data-category="shortform" data-project-id="p4">
+                        <div>
+                            <div class="relative aspect-video bg-gray-100 overflow-hidden group/thumb">
+                                <img id="thumb-p4" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80" alt="Yamaha R1M" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                
+                                <button onclick="openSwapThumbnailModal('p4', 'Yamaha R1M (@r1m_yatty)')" class="absolute top-2 right-2 opacity-0 group-hover/thumb:opacity-100 transition-opacity z-20 bg-black text-white text-[10px] font-mono px-2 py-0.5 border border-black">
+                                    [edit thumbnail]
+                                </button>
+
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
+                                    <button onclick="openExternalMediaModal('https://www.instagram.com/r1m_yatty/', 'Yamaha R1M (@r1m_yatty)')" class="w-10 h-10 rounded-full bg-white text-black border border-black flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all">
+                                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 border-t border-am-border">
+                                <div class="text-[10px] text-am-muted mb-1 uppercase tracking-wider">Automotive Collab</div>
+                                <h3 class="text-sm font-bold text-black mb-2 uppercase tracking-tight">
+                                    Yamaha R1M (@r1m_yatty)
+                                </h3>
+                                <div class="text-[11px] text-black font-semibold">
+                                    VIDEO PRODUCER | VIDEOGRAPHER | VIDEO EDITOR | COLORIST
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 pt-0 flex justify-between items-center text-xs border-t border-am-border/60 pt-2.5 mt-auto">
+                            <span class="text-am-muted text-[10px]">INSTAGRAM</span>
+                            <a href="https://www.instagram.com/r1m_yatty/" target="_blank" rel="noopener" class="text-black font-bold hover:underline flex items-center gap-1 font-mono text-[10px] uppercase">
+                                [open link] <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- 2. LONGFORM & SERIES SECTION -->
+            <div class="space-y-4 cat-section pt-6 border-t border-am-border" id="section-longform">
+                <div class="text-xs font-bold uppercase tracking-wider text-black border-l-2 border-black pl-2">
+                    02 // LONGFORM &amp; SERIES
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- P5: To Be Determined -->
+                    <article class="project-card group border border-am-border hover:border-black bg-white overflow-hidden transition-all duration-200 flex flex-col justify-between" data-category="longform" data-project-id="p5">
+                        <div>
+                            <div class="relative aspect-video bg-gray-100 overflow-hidden group/thumb">
+                                <img id="thumb-p5" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="To Be Determined" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                
+                                <button onclick="openSwapThumbnailModal('p5', 'To Be Determined w/ @stefdagz')" class="absolute top-2 right-2 opacity-0 group-hover/thumb:opacity-100 transition-opacity z-20 bg-black text-white text-[10px] font-mono px-2 py-0.5 border border-black">
+                                    [edit thumbnail]
+                                </button>
+
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
+                                    <button onclick="openYouTubeEmbed('ORLp_nmlkA0', 'To Be Determined w/ @stefdagz')" class="w-10 h-10 rounded-full bg-white text-black border border-black flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all">
+                                        <i class="fa-solid fa-play text-xs ml-0.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="p-4 border-t border-am-border">
+                                <div class="text-[10px] text-am-muted mb-1 uppercase tracking-wider">YouTube Feature</div>
+                                <h3 class="text-sm font-bold text-black mb-2 uppercase tracking-tight">
+                                    To Be Determined w/ @stefdagz
+                                </h3>
+                                <div class="text-[11px] text-black font-semibold">
+                                    SOUND DESIGNER | SOUND MIXER
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 pt-0 flex justify-between items-center text-xs border-t border-am-border/60 pt-2.5 mt-auto">
+                            <span class="text-am-muted text-[10px]">YOUTUBE</span>
+                            <button onclick="openYouTubeEmbed('ORLp_nmlkA0', 'To Be Determined w/ @stefdagz')" class="text-black font-bold hover:underline flex items-center gap-1 font-mono text-[10px] uppercase">
+                                [watch video] <i class="fa-solid fa-expand text-[8px]"></i>
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <!-- 3. PHOTOGRAPHY & EDITORIAL SECTION -->
+            <div class="space-y-4 cat-section pt-6 border-t border-am-border" id="section-photo">
+                <div class="text-xs font-bold uppercase tracking-wider text-black border-l-2 border-black pl-2">
+                    03 // PHOTOGRAPHY &amp; EDITORIAL
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- P6: Model Comp Cards -->
+                    <article class="project-card group border border-am-border hover:border-black bg-white overflow-hidden transition-all duration-200 flex flex-col justify-between" data-category="photo" data-project-id="p6">
+                        <div>
+                            <div class="relative aspect-video bg-gray-100 overflow-hidden group/thumb">
+                                <img id="thumb-p6" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Model Comp Cards" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                
+                                <button onclick="openSwapThumbnailModal('p6', 'Model Comp Cards/Digitals')" class="absolute top-2 right-2 opacity-0 group-hover/thumb:opacity-100 transition-opacity z-20 bg-black text-white text-[10px] font-mono px-2 py-0.5 border border-black">
+                                    [edit thumbnail]
+                                </button>
+
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
+                                    <a href="https://www.instagram.com/p/DZfsv0TGrnP/?img_index=1" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white text-black border border-black flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all">
+                                        <i class="fa-solid fa-camera text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="p-4 border-t border-am-border">
+                                <div class="text-[10px] text-am-muted mb-1 uppercase tracking-wider">@lovelarocheshoots</div>
+                                <h3 class="text-sm font-bold text-black mb-2 uppercase tracking-tight">
+                                    Model Comp Cards / Digitals
+                                </h3>
+                                <div class="text-[11px] text-black font-semibold">
+                                    PHOTOGRAPHY
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 pt-0 flex justify-between items-center text-xs border-t border-am-border/60 pt-2.5 mt-auto">
+                            <span class="text-am-muted text-[10px]">INSTAGRAM GALLERY</span>
+                            <a href="https://www.instagram.com/p/DZfsv0TGrnP/?img_index=1" target="_blank" rel="noopener" class="text-black font-bold hover:underline flex items-center gap-1 font-mono text-[10px] uppercase">
+                                [view gallery] <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- P7: Commercial Photography -->
+                    <article class="project-card group border border-am-border hover:border-black bg-white overflow-hidden transition-all duration-200 flex flex-col justify-between" data-category="photo" data-project-id="p7">
+                        <div>
+                            <div class="relative aspect-video bg-gray-100 overflow-hidden group/thumb">
+                                <img id="thumb-p7" src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80" alt="Commercial Gallery" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                
+                                <button onclick="openSwapThumbnailModal('p7', 'Commercial Photography Gallery')" class="absolute top-2 right-2 opacity-0 group-hover/thumb:opacity-100 transition-opacity z-20 bg-black text-white text-[10px] font-mono px-2 py-0.5 border border-black">
+                                    [edit thumbnail]
+                                </button>
+
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors flex items-center justify-center">
+                                    <a href="https://www.instagram.com/p/DePnbdTj5wv/?img_index=1" target="_blank" rel="noopener" class="w-10 h-10 rounded-full bg-white text-black border border-black flex items-center justify-center shadow-md transform group-hover:scale-110 transition-all">
+                                        <i class="fa-solid fa-camera text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="p-4 border-t border-am-border">
+                                <div class="text-[10px] text-am-muted mb-1 uppercase tracking-wider">@lovelarocheshoots</div>
+                                <h3 class="text-sm font-bold text-black mb-2 uppercase tracking-tight">
+                                    Commercial Gallery
+                                </h3>
+                                <div class="text-[11px] text-black font-semibold">
+                                    PHOTOGRAPHY
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-4 pb-4 pt-0 flex justify-between items-center text-xs border-t border-am-border/60 pt-2.5 mt-auto">
+                            <span class="text-am-muted text-[10px]">INSTAGRAM GALLERY</span>
+                            <a href="https://www.instagram.com/p/DePnbdTj5wv/?img_index=1" target="_blank" rel="noopener" class="text-black font-bold hover:underline flex items-center gap-1 font-mono text-[10px] uppercase">
+                                [view gallery] <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-am-border bg-am-subtle py-8 px-4 md:px-8 mt-16">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-am-muted">
+            <div class="flex items-center gap-2">
+                <span class="text-black font-bold uppercase">roche sacks</span>
+                <span>2026 ©</span>
+                <span>|</span>
+                <span>ALL RIGHTS RESERVED</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button onclick="copyToClipboard('booking@lovekaroche.com')" class="text-black font-medium hover:underline uppercase">
+                    booking@lovekaroche.com
+                </button>
+                <span>•</span>
+                <a href="https://www.instagram.com/lovelarocheshoots/" target="_blank" rel="noopener" class="text-black font-medium hover:underline uppercase">
+                    @lovelarocheshoots
+                </a>
+                <span>•</span>
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-black border border-black hover:bg-black hover:text-white px-2 py-0.5 transition-all">
+                    [top ↑]
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: EDIT THUMBNAIL -->
+    <div id="swap-thumb-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border-2 border-black max-w-lg w-full p-6 relative shadow-2xl">
+            <button onclick="closeModal('swap-thumb-modal')" class="absolute top-4 right-4 text-black hover:bg-black hover:text-white px-2 py-0.5 border border-black font-mono text-xs">
+                [x]
+            </button>
+
+            <span class="text-[10px] text-am-muted uppercase tracking-widest block mb-1">// THUMBNAIL EDITOR</span>
+            <h3 id="swap-thumb-modal-title" class="text-base font-bold text-black mb-4 uppercase">Edit Card Thumbnail</h3>
+
+            <div class="mb-4 aspect-video bg-gray-100 border border-black overflow-hidden relative">
+                <img id="swap-thumb-preview" src="" alt="Thumbnail Preview" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[10px] text-black font-bold uppercase mb-1">Image URL</label>
+                    <input type="text" id="swap-thumb-input" placeholder="Paste custom image link here..." class="w-full bg-white border border-black p-2.5 text-xs text-black focus:outline-none font-mono">
+                </div>
+
+                <div>
+                    <label class="block text-[10px] text-am-muted uppercase mb-2">Preset Image Placeholders</label>
+                    <div class="grid grid-cols-5 gap-2">
+                        <button onclick="applyPresetThumb('https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80')" class="aspect-square border border-am-border hover:border-black overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="applyPresetThumb('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80')" class="aspect-square border border-am-border hover:border-black overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="applyPresetThumb('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=80')" class="aspect-square border border-am-border hover:border-black overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="applyPresetThumb('https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80')" class="aspect-square border border-am-border hover:border-black overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover">
+                        </button>
+                        <button onclick="applyPresetThumb('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80')" class="aspect-square border border-am-border hover:border-black overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=150&q=80" class="w-full h-full object-cover">
+                        </button>
+                    </div>
+                </div>
+
+                <button onclick="saveCustomThumbnail()" class="w-full bg-black text-white font-bold p-2.5 text-xs hover:bg-gray-800 transition-colors uppercase">
+                    [save thumbnail]
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: ABOUT MODAL -->
+    <div id="about-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 md:p-8 overflow-y-auto">
+        <div class="bg-white border-2 border-black max-w-2xl w-full p-6 md:p-10 relative my-8 shadow-2xl">
+            <button onclick="closeModal('about-modal')" class="absolute top-6 right-6 text-black hover:bg-black hover:text-white px-2 py-0.5 border border-black font-mono text-xs">
+                [x]
+            </button>
+
+            <div class="border-b border-black pb-4 mb-6">
+                <span class="text-xs text-am-muted uppercase tracking-widest">// BIOGRAPHY</span>
+                <h2 class="text-xl md:text-2xl font-bold text-black mt-1 uppercase">ROCHELLE "ROCHE" SACKS</h2>
+                <p class="text-xs text-am-muted font-mono mt-1">VIDEO PRODUCER • EDITOR • CINEMATOGRAPHER • CREATIVE DIRECTOR</p>
+            </div>
+
+            <div class="space-y-4 text-xs text-black leading-relaxed font-mono">
+                <p>
+                    Hi! I’m Rochelle. As a seasoned video producer and editor, I’ve spent the past twelve years helping commercial, government and influencer brands develop digital storytelling that helps bolster their social media presence, elevate meaningful audience engagement and grow their impact online.
+                </p>
+                <p>
+                    With experience creating platform-specific long and short video products for large clients (U.S. Department of State, Refinery29, influencers), I thrive both as a full-service video producer/editor, project manager, content creator, and communications strategist.
+                </p>
+                <p>
+                    I also bring over ten years of experience working as a photographer, sound mixer/designer, international runway model and musician. Growing up overseas in Vietnam, Korea, and Panama, my international background empowers me to intersect my global and creative interests as a digital storyteller. My work is informed by the connections made with my subjects on a human level, understanding that behind every video are real stories waiting to be told.
+                </p>
+            </div>
+
+            <div class="mt-8 border-t border-am-border pt-6">
+                <span class="text-xs text-am-muted uppercase tracking-widest block mb-3">// ROLES &amp; DISCIPLINE TAGS</span>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs font-mono">
+                    <div class="bg-am-subtle p-2 border border-am-border text-black font-semibold">Creative Director</div>
+                    <div class="bg-am-subtle p-2 border border-am-border text-black font-semibold">Cinematographer</div>
+                    <div class="bg-am-subtle p-2 border border-am-border text-black font-semibold">Video Producer/Editor</div>
+                    <div class="bg-am-subtle p-2 border border-am-border text-black font-semibold">Colorist</div>
+                    <div class="bg-am-subtle p-2 border border-am-border text-black font-semibold">Content Creator</div>
+                    <div class="bg-am-subtle p-2 border border-am-border text-black font-semibold">Sound Designer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: CONTACT MODAL -->
+    <div id="contact-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4 md:p-8 overflow-y-auto">
+        <div class="bg-white border-2 border-black max-w-xl w-full p-6 md:p-8 relative my-8 shadow-2xl">
+            <button onclick="closeModal('contact-modal')" class="absolute top-6 right-6 text-black hover:bg-black hover:text-white px-2 py-0.5 border border-black font-mono text-xs">
+                [x]
+            </button>
+
+            <div class="border-b border-black pb-4 mb-6">
+                <span class="text-xs text-am-muted uppercase tracking-widest">// CONTACT &amp; BOOKINGS</span>
+                <h2 class="text-xl font-bold text-black mt-1 uppercase">GET IN TOUCH WITH ROCHE</h2>
+            </div>
+
+            <div class="bg-am-subtle border border-black p-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div>
+                    <div class="text-[10px] text-am-muted uppercase">DIRECT EMAIL</div>
+                    <div class="text-black font-mono text-sm font-bold">booking@lovekaroche.com</div>
+                </div>
+                <button onclick="copyToClipboard('booking@lovekaroche.com')" class="bg-black text-white font-bold px-3 py-1.5 text-xs hover:bg-gray-800 transition-colors uppercase">
+                    [copy email]
+                </button>
+            </div>
+
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[10px] text-black font-bold uppercase mb-1">Your Name / Company</label>
+                    <input type="text" required placeholder="Name or brand..." class="w-full bg-white border border-black p-2.5 text-xs text-black focus:outline-none font-mono">
+                </div>
+                <div>
+                    <label class="block text-[10px] text-black font-bold uppercase mb-1">Your Email</label>
+                    <input type="email" required placeholder="email@domain.com" class="w-full bg-white border border-black p-2.5 text-xs text-black focus:outline-none font-mono">
+                </div>
+                <div>
+                    <label class="block text-[10px] text-black font-bold uppercase mb-1">Project Details</label>
+                    <textarea rows="4" required placeholder="Describe deliverables, timeline, budget..." class="w-full bg-white border border-black p-2.5 text-xs text-black focus:outline-none font-mono"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-black text-white font-bold p-2.5 text-xs hover:bg-gray-800 transition-colors uppercase">
+                    SEND TRANSMISSION →
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 4: SWAP VIMEO HERO REEL -->
+    <div id="vimeo-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border-2 border-black max-w-lg w-full p-6 relative shadow-2xl">
+            <button onclick="closeModal('vimeo-modal')" class="absolute top-4 right-4 text-black hover:bg-black hover:text-white px-2 py-0.5 border border-black font-mono text-xs">
+                [x]
+            </button>
+
+            <span class="text-[10px] text-am-muted uppercase tracking-widest block mb-1">// HERO REEL CONFIG</span>
+            <h3 class="text-base font-bold text-black mb-4 uppercase">Update Hero Vimeo Reel</h3>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[10px] text-black font-bold uppercase mb-1">Vimeo Link or ID</label>
+                    <input type="text" id="vimeo-input" placeholder="https://vimeo.com/76979871 or 76979871" class="w-full bg-white border border-black p-2.5 text-xs text-black focus:outline-none font-mono">
+                </div>
+                <button onclick="updateVimeoReel()" class="w-full bg-black text-white font-bold p-2.5 text-xs hover:bg-gray-800 transition-colors uppercase">
+                    [apply reel to hero]
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: YOUTUBE MEDIA LIGHTBOX -->
+    <div id="media-modal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border-2 border-black max-w-4xl w-full overflow-hidden relative shadow-2xl">
+            <div class="p-3 bg-white border-b border-black flex justify-between items-center text-xs">
+                <span id="media-modal-title" class="text-black font-bold uppercase">// WATCH VIDEO</span>
+                <button onclick="closeModal('media-modal')" class="text-black font-bold hover:underline font-mono text-xs">
+                    [close x]
+                </button>
+            </div>
+            <div class="aspect-video bg-black">
+                <iframe id="youtube-frame" class="w-full h-full border-0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6: EXTERNAL LINK MODAL -->
+    <div id="external-media-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white border-2 border-black max-w-lg w-full p-6 relative shadow-2xl text-center">
+            <button onclick="closeModal('external-media-modal')" class="absolute top-4 right-4 text-black hover:bg-black hover:text-white px-2 py-0.5 border border-black font-mono text-xs">
+                [x]
+            </button>
+
+            <span class="text-[10px] text-am-muted uppercase tracking-widest block mb-2">// EXTERNAL REEL</span>
+            <h3 id="ext-media-title" class="text-base font-bold text-black mb-4 uppercase">Project Link</h3>
+
+            <a id="ext-media-link" href="#" target="_blank" rel="noopener" class="inline-block w-full bg-black text-white font-bold py-2.5 px-6 text-xs hover:bg-gray-800 transition-colors uppercase">
+                OPEN REEL ON INSTAGRAM / TIKTOK →
+            </a>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-black text-white font-mono text-xs font-bold px-4 py-3 border border-black shadow-2xl hidden flex items-center gap-2">
+        <i class="fa-solid fa-check"></i>
+        <span id="toast-message">Action completed</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let currentTargetProjectId = null;
+
+        // Restore custom thumbnails & Vimeo reel from localStorage
+        function loadPersistedData() {
+            const savedThumbs = JSON.parse(localStorage.getItem('roche_portfolio_thumbnails') || '{}');
+            Object.keys(savedThumbs).forEach(id => {
+                const imgEl = document.getElementById('thumb-' + id);
+                if (imgEl && savedThumbs[id]) {
+                    imgEl.src = savedThumbs[id];
+                }
+            });
+
+            const savedVimeo = localStorage.getItem('roche_portfolio_vimeo');
+            if (savedVimeo) {
+                document.getElementById('vimeo-player').src = `https://player.vimeo.com/video/${savedVimeo}?autoplay=0&loop=1&title=0&byline=0&portrait=0`;
+            }
+        }
+
+        function openSwapThumbnailModal(projectId, projectTitle) {
+            currentTargetProjectId = projectId;
+            const imgEl = document.getElementById('thumb-' + projectId);
+            const currentSrc = imgEl ? imgEl.src : '';
+
+            document.getElementById('swap-thumb-modal-title').innerText = 'EDIT: ' + projectTitle;
+            document.getElementById('swap-thumb-input').value = currentSrc;
+            document.getElementById('swap-thumb-preview').src = currentSrc;
+
+            document.getElementById('swap-thumb-input').oninput = function(e) {
+                document.getElementById('swap-thumb-preview').src = e.target.value;
+            };
+
+            openModal('swap-thumb-modal');
+        }
+
+        function applyPresetThumb(url) {
+            document.getElementById('swap-thumb-input').value = url;
+            document.getElementById('swap-thumb-preview').src = url;
+        }
+
+        function saveCustomThumbnail() {
+            if (!currentTargetProjectId) return;
+            const newUrl = document.getElementById('swap-thumb-input').value.trim();
+            if (!newUrl) return;
+
+            const imgEl = document.getElementById('thumb-' + currentTargetProjectId);
+            if (imgEl) imgEl.src = newUrl;
+
+            const savedThumbs = JSON.parse(localStorage.getItem('roche_portfolio_thumbnails') || '{}');
+            savedThumbs[currentTargetProjectId] = newUrl;
+            localStorage.setItem('roche_portfolio_thumbnails', JSON.stringify(savedThumbs));
+
+            closeModal('swap-thumb-modal');
+            showToast('Thumbnail updated & saved!');
+        }
+
+        function resetAllThumbnails() {
+            localStorage.removeItem('roche_portfolio_thumbnails');
+            localStorage.removeItem('roche_portfolio_vimeo');
+            location.reload();
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            if (id === 'media-modal') {
+                document.getElementById('youtube-frame').src = '';
+            }
+        }
+
+        function filterCategory(category) {
+            const sections = document.querySelectorAll('.cat-section');
+            const tabs = document.querySelectorAll('.filter-tab');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('font-bold', 'text-black', 'border-b-2', 'border-black');
+                tab.classList.add('text-am-muted');
+            });
+
+            const activeTab = document.getElementById('filter-' + category);
+            if (activeTab) {
+                activeTab.classList.remove('text-am-muted');
+                activeTab.classList.add('font-bold', 'text-black', 'border-b-2', 'border-black');
+            }
+
+            if (category === 'all') {
+                sections.forEach(sec => sec.style.display = 'block');
+            } else {
+                sections.forEach(sec => {
+                    if (sec.id === 'section-' + category) {
+                        sec.style.display = 'block';
+                    } else {
+                        sec.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        function copyToClipboard(text) {
+            const dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            
+            showToast("Copied " + text + "!");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            if (toast && toastMsg) {
+                toastMsg.innerText = msg;
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3000);
+            }
+        }
+
+        function updateVimeoReel() {
+            const input = document.getElementById('vimeo-input').value.trim();
+            if (!input) return;
+
+            let videoId = input;
+            if (input.includes('vimeo.com/')) {
+                const parts = input.split('vimeo.com/');
+                videoId = parts[1].split('?')[0].split('/')[0];
+            }
+
+            document.getElementById('vimeo-player').src = `https://player.vimeo.com/video/${videoId}?autoplay=1&loop=1&title=0&byline=0&portrait=0`;
+            localStorage.setItem('roche_portfolio_vimeo', videoId);
+
+            closeModal('vimeo-modal');
+            showToast('Hero Vimeo Reel updated!');
+        }
+
+        function openYouTubeEmbed(videoId, title) {
+            document.getElementById('media-modal-title').innerText = '// WATCH: ' + title;
+            document.getElementById('youtube-frame').src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            openModal('media-modal');
+        }
+
+        function openExternalMediaModal(url, title) {
+            document.getElementById('ext-media-title').innerText = title;
+            document.getElementById('ext-media-link').href = url;
+            openModal('external-media-modal');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            closeModal('contact-modal');
+            showToast('Transmission sent!');
+        }
+
+        window.onload = function() {
+            loadPersistedData();
+        };
+    </script>
+</body>
+</html>
