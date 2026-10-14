@@ -34,7 +34,6 @@
       line-height: 1.4;
     }
 
-    /* Top Navigation */
     header {
       position: sticky;
       top: 0;
@@ -59,9 +58,6 @@
       font-weight: 700;
       text-decoration: none;
       color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .nav-links {
@@ -94,7 +90,6 @@
       letter-spacing: 0.05em;
     }
 
-    /* Hero Banner */
     .hero {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -138,7 +133,6 @@
       color: var(--accent-red);
     }
 
-    /* Main Sections */
     .section-container {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -167,7 +161,6 @@
       margin-bottom: 2rem;
     }
 
-    /* 3-Column Video/GIF Grid */
     .grid-3-col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -223,7 +216,6 @@
       opacity: 1;
     }
 
-    /* Red Metatext Box */
     .meta-red-card {
       background: #ffffff;
       border-left: 4px solid var(--accent-red);
@@ -249,7 +241,6 @@
       color: var(--text-main);
     }
 
-    /* Big Red Call To Action Footer */
     .cta-footer-block {
       background: var(--accent-red);
       color: #ffffff;
@@ -287,7 +278,6 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
 
-    /* Modal / Drawer Overlay */
     .drawer-overlay {
       position: fixed;
       inset: 0;
@@ -335,13 +325,11 @@
 </head>
 <body>
 
-  <!-- Sub Header Specs -->
   <div class="sub-header-bar">
     <div>✦ MADE FOR DIGITAL STORYTELLING</div>
     <div>WASHINGTON DC / GLOBAL ✦</div>
   </div>
 
-  <!-- Main Navigation -->
   <header>
     <div class="nav-container">
       <a href="#" class="nav-brand">roche sacks</a>
@@ -353,7 +341,6 @@
     </div>
   </header>
 
-  <!-- Hero Header -->
   <section class="hero">
     <div class="hero-tagline-top">A FEEL FOR STORY. AN EYE FOR CULTURE.</div>
     <div class="brand-red-box">roche sacks</div>
@@ -363,7 +350,6 @@
     </div>
   </section>
 
-  <!-- Section 01: Refinery29 Lookbook -->
   <section class="section-container" id="work">
     <div class="section-num">01 / SELECTED WORK</div>
     <h2 class="section-title">Culture in motion.</h2>
@@ -390,7 +376,6 @@
     </div>
   </section>
 
-  <!-- Section 02: Influencer Collabs -->
   <section class="section-container">
     <div class="section-num">02 / INFLUENCER & COMMERCIAL</div>
     <h2 class="section-title">In the room. On the feed.</h2>
@@ -416,7 +401,6 @@
     </div>
   </section>
 
-  <!-- Call to Action Footer -->
   <footer class="cta-footer-block" id="contact">
     <div class="cta-container">
       <div class="section-num" style="color:#ffb3bc;">03 / GET IN TOUCH</div>
@@ -425,7 +409,6 @@
     </div>
   </footer>
 
-  <!-- Drawer Modal -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOnOverlay(event)">
     <div class="drawer-content" id="drawerContent">
       <button class="drawer-close" onclick="closeDrawer()">&times;</button>
@@ -434,7 +417,6 @@
   </div>
 
   <script>
-    // Custom Media URL Storage
     function editMedia(id) {
       const img = document.getElementById('img-' + id);
       const currentSrc = img.src;
@@ -445,7 +427,6 @@
       }
     }
 
-    // Load saved GIFs from localStorage
     window.addEventListener('DOMContentLoaded', () => {
       ['r29-1', 'r29-2', 'r29-3', 'inf-1', 'inf-2', 'inf-3'].forEach(id => {
         const saved = localStorage.getItem('roche_gif_' + id);
@@ -456,7 +437,6 @@
       });
     });
 
-    // About Drawer
     function openAboutDrawer(e) {
       e.preventDefault();
       document.getElementById('drawerInner').innerHTML = `
@@ -469,7 +449,6 @@
       document.getElementById('drawerOverlay').classList.add('active');
     }
 
-    // Contact Drawer
     function openContactDrawer(e) {
       if (e) e.preventDefault();
       document.getElementById('drawerInner').innerHTML = `
