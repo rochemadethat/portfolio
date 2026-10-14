@@ -134,11 +134,11 @@
       color: var(--accent-red);
     }
 
-    /* Full-Screen / Full-Slide Custom MP4 Background Video */
+    /* Full-Screen MP4 Background Video Section */
     .video-hero-section {
       position: relative;
       width: 100%;
-      height: 85vh; /* Takes up full screen height under hero */
+      height: 85vh;
       min-height: 500px;
       background: #000000;
       overflow: hidden;
@@ -474,8 +474,8 @@
 
   <!-- Full-Page MP4 Background Video Section -->
   <section class="video-hero-section">
-    <video class="bg-video-element" id="bgMp4Video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1920&q=80">
-      <source id="bgMp4Source" src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4" type="video/mp4">
+    <video class="bg-video-element" id="bgMp4Video" autoplay loop muted playsinline>
+      <source id="bgMp4Source" src="showreel.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
     
@@ -676,11 +676,10 @@
 
     // Change Custom MP4 Source
     function changeMp4Url() {
-      const current = document.getElementById('bgMp4Source').src;
-      const newUrl = prompt("Paste your direct MP4 video link (or upload to GitHub repo as showreel.mp4 and paste 'showreel.mp4'):", current);
+      const source = document.getElementById('bgMp4Source');
+      const newUrl = prompt("Paste your MP4 URL or filename:", source.src);
       if (newUrl && newUrl.trim() !== "") {
         const video = document.getElementById('bgMp4Video');
-        const source = document.getElementById('bgMp4Source');
         source.src = newUrl.trim();
         video.load();
         video.play();
