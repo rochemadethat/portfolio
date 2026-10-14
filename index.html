@@ -270,7 +270,7 @@
       text-decoration: none;
     }
 
-    .media-card img {
+    .media-card video, .media-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -278,7 +278,7 @@
       transition: transform 0.3s ease;
     }
 
-    .media-card:hover img {
+    .media-card:hover video, .media-card:hover img {
       transform: scale(1.03);
     }
 
@@ -297,6 +297,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      z-index: 5;
     }
 
     .media-card:hover .card-overlay-indicator {
@@ -493,37 +494,37 @@
 
     <div class="grid-3-col">
       <a href="https://state.gov" target="_blank" class="media-card" id="link-gov-1">
-        <img id="img-gov-1" src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80" alt="State Dept Video 1">
+        <video id="img-gov-1" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch External Video</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-1')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-1')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('gov-1')">[EDIT LINK]</button>
         </div>
       </a>
 
       <a href="https://state.gov" target="_blank" class="media-card" id="link-gov-2">
-        <img id="img-gov-2" src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=600&q=80" alt="State Dept Video 2">
+        <video id="img-gov-2" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch External Video</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-2')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-2')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('gov-2')">[EDIT LINK]</button>
         </div>
       </a>
 
       <a href="https://state.gov" target="_blank" class="media-card" id="link-gov-3">
-        <img id="img-gov-3" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="State Dept Video 3">
+        <video id="img-gov-3" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch External Video</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-3')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-3')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('gov-3')">[EDIT LINK]</button>
         </div>
       </a>
@@ -543,37 +544,37 @@
 
     <div class="grid-3-col">
       <a href="https://www.instagram.com/refinery29/reel/DQ-PF6-Ce0J/" target="_blank" class="media-card" id="link-r29-1">
-        <img id="img-r29-1" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="R29 Lookbook">
+        <video id="img-r29-1" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch on Instagram</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-1')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-1')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('r29-1')">[EDIT LINK]</button>
         </div>
       </a>
 
       <a href="https://www.instagram.com/refinery29/reel/DSGVNa3iWJT/" target="_blank" class="media-card" id="link-r29-2">
-        <img id="img-r29-2" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="R29 Lookbook">
+        <video id="img-r29-2" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch on Instagram</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-2')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-2')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('r29-2')">[EDIT LINK]</button>
         </div>
       </a>
 
       <a href="https://www.instagram.com/refinery29/" target="_blank" class="media-card" id="link-r29-3">
-        <img id="img-r29-3" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="R29 Lookbook">
+        <video id="img-r29-3" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch on Instagram</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-3')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-3')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('r29-3')">[EDIT LINK]</button>
         </div>
       </a>
@@ -592,37 +593,37 @@
 
     <div class="grid-3-col">
       <a href="https://www.instagram.com/nite.skooled/reel/DRVGcMjAc9G/" target="_blank" class="media-card" id="link-inf-1">
-        <img id="img-inf-1" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Roland Holy Trinity">
+        <video id="img-inf-1" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch on Instagram</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-1')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-1')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('inf-1')">[EDIT LINK]</button>
         </div>
       </a>
 
       <a href="https://www.instagram.com/r1m_yatty/" target="_blank" class="media-card" id="link-inf-2">
-        <img id="img-inf-2" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80" alt="Yamaha R1M">
+        <video id="img-inf-2" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch on Instagram</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-2')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-2')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('inf-2')">[EDIT LINK]</button>
         </div>
       </a>
 
       <a href="https://www.youtube.com/watch?v=ORLp_nmlkA0" target="_blank" class="media-card" id="link-inf-3">
-        <img id="img-inf-3" src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=600&q=80" alt="Sound Design Feature">
+        <video id="img-inf-3" autoplay loop muted playsinline src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4"></video>
         <div class="card-overlay-indicator">
           <span>Watch on YouTube</span>
           <span>↗</span>
         </div>
         <div class="card-actions">
-          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-3')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-3')">[EDIT MP4 / GIF]</button>
           <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('inf-3')">[EDIT LINK]</button>
         </div>
       </a>
@@ -678,12 +679,16 @@
       }
     }
 
-    // Edit GIF Thumbnail
+    // Edit MP4 / GIF Thumbnail
     function editCardGif(id) {
-      const img = document.getElementById('img-' + id);
-      const newUrl = prompt("Paste your new GIF or Image URL:", img.src);
+      const el = document.getElementById('img-' + id);
+      const newUrl = prompt("Paste your MP4 or GIF filename (e.g., state-1.mp4 or state-1.gif):", el.src);
       if (newUrl && newUrl.trim() !== "") {
-        img.src = newUrl.trim();
+        el.src = newUrl.trim();
+        if (el.tagName === 'VIDEO') {
+          el.load();
+          el.play();
+        }
         localStorage.setItem('roche_gif_' + id, newUrl.trim());
       }
     }
@@ -712,10 +717,16 @@
       const cardIds = ['gov-1', 'gov-2', 'gov-3', 'r29-1', 'r29-2', 'r29-3', 'inf-1', 'inf-2', 'inf-3'];
       
       cardIds.forEach(id => {
-        const savedGif = localStorage.getItem('roche_gif_' + id);
-        if (savedGif) {
-          const img = document.getElementById('img-' + id);
-          if (img) img.src = savedGif;
+        const savedMedia = localStorage.getItem('roche_gif_' + id);
+        if (savedMedia) {
+          const el = document.getElementById('img-' + id);
+          if (el) {
+            el.src = savedMedia;
+            if (el.tagName === 'VIDEO') {
+              el.load();
+              el.play();
+            }
+          }
         }
 
         const savedLink = localStorage.getItem('roche_link_' + id);
