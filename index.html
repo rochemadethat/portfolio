@@ -34,6 +34,18 @@
       line-height: 1.4;
     }
 
+    .sub-header-bar {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1rem 2rem 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
     header {
       position: sticky;
       top: 0;
@@ -78,22 +90,10 @@
       color: var(--text-main);
     }
 
-    .sub-header-bar {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 1rem 2rem 0 2rem;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: var(--text-light);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
     .hero {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 4rem 2rem 5rem 2rem;
+      padding: 3.5rem 2rem 3rem 2rem;
       text-align: center;
     }
 
@@ -102,7 +102,7 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--text-light);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       font-weight: 600;
     }
 
@@ -133,6 +133,55 @@
       color: var(--accent-red);
     }
 
+    /* 16x9 Full-Width Showreel Container */
+    .showreel-wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto 5rem auto;
+      padding: 0 2rem;
+    }
+
+    .showreel-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #0d0d0d;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    }
+
+    .showreel-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .showreel-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.75rem;
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .edit-reel-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.3rem 0.6rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .edit-reel-btn:hover {
+      background: #ffffff;
+      color: var(--text-main);
+    }
+
+    /* Section Styling */
     .section-container {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -161,6 +210,7 @@
       margin-bottom: 2rem;
     }
 
+    /* 3-Column Grid */
     .grid-3-col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -182,6 +232,8 @@
       border-radius: 4px;
       overflow: hidden;
       box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      display: block;
+      text-decoration: none;
     }
 
     .media-card img {
@@ -196,15 +248,42 @@
       transform: scale(1.03);
     }
 
-    .edit-gif-btn {
+    .card-overlay-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 1.5rem 1rem 0.75rem 1rem;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .media-card:hover .card-overlay-indicator {
+      opacity: 1;
+    }
+
+    .card-actions {
       position: absolute;
       top: 0.5rem;
       right: 0.5rem;
-      background: rgba(0,0,0,0.75);
+      display: flex;
+      gap: 0.35rem;
+      z-index: 10;
+    }
+
+    .edit-card-btn {
+      background: rgba(0,0,0,0.8);
       color: #fff;
       border: none;
       font-size: 0.65rem;
-      padding: 0.3rem 0.6rem;
+      padding: 0.3rem 0.5rem;
       border-radius: 3px;
       cursor: pointer;
       opacity: 0;
@@ -212,7 +291,7 @@
       font-family: inherit;
     }
 
-    .media-card:hover .edit-gif-btn {
+    .media-card:hover .edit-card-btn {
       opacity: 1;
     }
 
@@ -341,6 +420,7 @@
     </div>
   </header>
 
+  <!-- Hero Header -->
   <section class="hero">
     <div class="hero-tagline-top">A FEEL FOR STORY. AN EYE FOR CULTURE.</div>
     <div class="brand-red-box">roche sacks</div>
@@ -350,24 +430,109 @@
     </div>
   </section>
 
+  <!-- Full-Width 16x9 Showreel Section -->
+  <section class="showreel-wrapper">
+    <div class="showreel-frame">
+      <iframe id="heroReelIframe" src="https://player.vimeo.com/video/76979871?autoplay=0&loop=1&autopause=0" allow="autoplay; fullscreen"></iframe>
+    </div>
+    <div class="showreel-controls">
+      <span>DEMO REEL 16:9</span>
+      <button class="edit-reel-btn" onclick="editReelUrl()">[EDIT SHOWREEL URL]</button>
+    </div>
+  </section>
+
+  <!-- Section 01: Government & Public Diplomacy Work -->
   <section class="section-container" id="work">
-    <div class="section-num">01 / SELECTED WORK</div>
+    <div class="section-num">01 / GOVERNMENT WORK</div>
+    <h2 class="section-title">Diplomacy & global storytelling.</h2>
+    <p class="section-desc">Strategic digital video and media production for the U.S. Department of State and international affairs.</p>
+
+    <div class="grid-3-col">
+      <a href="https://state.gov" target="_blank" class="media-card" id="link-gov-1">
+        <img id="img-gov-1" src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=600&q=80" alt="State Dept Video 1">
+        <div class="card-overlay-indicator">
+          <span>Watch External Video</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-1')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('gov-1')">[EDIT LINK]</button>
+        </div>
+      </a>
+
+      <a href="https://state.gov" target="_blank" class="media-card" id="link-gov-2">
+        <img id="img-gov-2" src="https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=600&q=80" alt="State Dept Video 2">
+        <div class="card-overlay-indicator">
+          <span>Watch External Video</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-2')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('gov-2')">[EDIT LINK]</button>
+        </div>
+      </a>
+
+      <a href="https://state.gov" target="_blank" class="media-card" id="link-gov-3">
+        <img id="img-gov-3" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="State Dept Video 3">
+        <div class="card-overlay-indicator">
+          <span>Watch External Video</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('gov-3')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('gov-3')">[EDIT LINK]</button>
+        </div>
+      </a>
+    </div>
+
+    <div class="meta-red-card">
+      <div class="meta-title">PROJECT: U.S. DEPARTMENT OF STATE GLOBAL CAMPAIGNS</div>
+      <div class="meta-role">ROLE: VIDEO PRODUCER, COMMUNICATIONS STRATEGIST, EDITOR</div>
+    </div>
+  </section>
+
+  <!-- Section 02: Refinery29 & Commercial Work -->
+  <section class="section-container">
+    <div class="section-num">02 / SELECTED WORK</div>
     <h2 class="section-title">Culture in motion.</h2>
     <p class="section-desc">From first concept to the final cut. Digital storytelling for global brands.</p>
 
     <div class="grid-3-col">
-      <div class="media-card">
+      <a href="https://www.instagram.com/refinery29/reel/DQ-PF6-Ce0J/" target="_blank" class="media-card" id="link-r29-1">
         <img id="img-r29-1" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="R29 Lookbook">
-        <button class="edit-gif-btn" onclick="editMedia('r29-1')">[EDIT GIF]</button>
-      </div>
-      <div class="media-card">
+        <div class="card-overlay-indicator">
+          <span>Watch on Instagram</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-1')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('r29-1')">[EDIT LINK]</button>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/refinery29/reel/DSGVNa3iWJT/" target="_blank" class="media-card" id="link-r29-2">
         <img id="img-r29-2" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="R29 Lookbook">
-        <button class="edit-gif-btn" onclick="editMedia('r29-2')">[EDIT GIF]</button>
-      </div>
-      <div class="media-card">
+        <div class="card-overlay-indicator">
+          <span>Watch on Instagram</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-2')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('r29-2')">[EDIT LINK]</button>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/refinery29/" target="_blank" class="media-card" id="link-r29-3">
         <img id="img-r29-3" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80" alt="R29 Lookbook">
-        <button class="edit-gif-btn" onclick="editMedia('r29-3')">[EDIT GIF]</button>
-      </div>
+        <div class="card-overlay-indicator">
+          <span>Watch on Instagram</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('r29-3')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('r29-3')">[EDIT LINK]</button>
+        </div>
+      </a>
     </div>
 
     <div class="meta-red-card">
@@ -376,23 +541,47 @@
     </div>
   </section>
 
+  <!-- Section 03: Influencer & Creative Collaborations -->
   <section class="section-container">
-    <div class="section-num">02 / INFLUENCER & COMMERCIAL</div>
+    <div class="section-num">03 / INFLUENCER & COMMERCIAL</div>
     <h2 class="section-title">In the room. On the feed.</h2>
 
     <div class="grid-3-col">
-      <div class="media-card">
+      <a href="https://www.instagram.com/nite.skooled/reel/DRVGcMjAc9G/" target="_blank" class="media-card" id="link-inf-1">
         <img id="img-inf-1" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Roland Holy Trinity">
-        <button class="edit-gif-btn" onclick="editMedia('inf-1')">[EDIT GIF]</button>
-      </div>
-      <div class="media-card">
+        <div class="card-overlay-indicator">
+          <span>Watch on Instagram</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-1')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('inf-1')">[EDIT LINK]</button>
+        </div>
+      </a>
+
+      <a href="https://www.instagram.com/r1m_yatty/" target="_blank" class="media-card" id="link-inf-2">
         <img id="img-inf-2" src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600&q=80" alt="Yamaha R1M">
-        <button class="edit-gif-btn" onclick="editMedia('inf-2')">[EDIT GIF]</button>
-      </div>
-      <div class="media-card">
+        <div class="card-overlay-indicator">
+          <span>Watch on Instagram</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-2')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('inf-2')">[EDIT LINK]</button>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=ORLp_nmlkA0" target="_blank" class="media-card" id="link-inf-3">
         <img id="img-inf-3" src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=600&q=80" alt="Sound Design Feature">
-        <button class="edit-gif-btn" onclick="editMedia('inf-3')">[EDIT GIF]</button>
-      </div>
+        <div class="card-overlay-indicator">
+          <span>Watch on YouTube</span>
+          <span>↗</span>
+        </div>
+        <div class="card-actions">
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardGif('inf-3')">[EDIT GIF]</button>
+          <button class="edit-card-btn" onclick="event.preventDefault(); editCardLink('inf-3')">[EDIT LINK]</button>
+        </div>
+      </a>
     </div>
 
     <div class="meta-red-card">
@@ -401,14 +590,16 @@
     </div>
   </section>
 
+  <!-- CTA Footer -->
   <footer class="cta-footer-block" id="contact">
     <div class="cta-container">
-      <div class="section-num" style="color:#ffb3bc;">03 / GET IN TOUCH</div>
+      <div class="section-num" style="color:#ffb3bc;">04 / GET IN TOUCH</div>
       <h2 class="cta-heading">Have something in mind?</h2>
       <a href="mailto:booking@lovekaroche.com" class="cta-btn">Let's make it happen ↗</a>
     </div>
   </footer>
 
+  <!-- Drawer Modal -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawerOnOverlay(event)">
     <div class="drawer-content" id="drawerContent">
       <button class="drawer-close" onclick="closeDrawer()">&times;</button>
@@ -417,22 +608,56 @@
   </div>
 
   <script>
-    function editMedia(id) {
+    // Edit Showreel URL
+    function editReelUrl() {
+      const current = document.getElementById('heroReelIframe').src;
+      const newUrl = prompt("Paste your Vimeo or YouTube embed URL for the showreel:", current);
+      if (newUrl && newUrl.trim() !== "") {
+        document.getElementById('heroReelIframe').src = newUrl.trim();
+        localStorage.setItem('roche_showreel_url', newUrl.trim());
+      }
+    }
+
+    // Edit GIF Thumbnail
+    function editCardGif(id) {
       const img = document.getElementById('img-' + id);
-      const currentSrc = img.src;
-      const newUrl = prompt("Paste your GIF or Image URL for this card:", currentSrc);
+      const newUrl = prompt("Paste your new GIF or Image URL:", img.src);
       if (newUrl && newUrl.trim() !== "") {
         img.src = newUrl.trim();
         localStorage.setItem('roche_gif_' + id, newUrl.trim());
       }
     }
 
+    // Edit External Video Destination Link
+    function editCardLink(id) {
+      const card = document.getElementById('link-' + id);
+      const newLink = prompt("Paste the external video link (Instagram reel, Vimeo, YouTube, State Dept):", card.href);
+      if (newLink && newLink.trim() !== "") {
+        card.href = newLink.trim();
+        localStorage.setItem('roche_link_' + id, newLink.trim());
+      }
+    }
+
+    // Load Persisted Data
     window.addEventListener('DOMContentLoaded', () => {
-      ['r29-1', 'r29-2', 'r29-3', 'inf-1', 'inf-2', 'inf-3'].forEach(id => {
-        const saved = localStorage.getItem('roche_gif_' + id);
-        if (saved) {
+      const savedReel = localStorage.getItem('roche_showreel_url');
+      if (savedReel) {
+        document.getElementById('heroReelIframe').src = savedReel;
+      }
+
+      const cardIds = ['gov-1', 'gov-2', 'gov-3', 'r29-1', 'r29-2', 'r29-3', 'inf-1', 'inf-2', 'inf-3'];
+      
+      cardIds.forEach(id => {
+        const savedGif = localStorage.getItem('roche_gif_' + id);
+        if (savedGif) {
           const img = document.getElementById('img-' + id);
-          if (img) img.src = saved;
+          if (img) img.src = savedGif;
+        }
+
+        const savedLink = localStorage.getItem('roche_link_' + id);
+        if (savedLink) {
+          const card = document.getElementById('link-' + id);
+          if (card) card.href = savedLink;
         }
       });
     });
