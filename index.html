@@ -90,6 +90,7 @@
       color: var(--text-main);
     }
 
+    /* Hero Branding */
     .hero {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -133,52 +134,88 @@
       color: var(--accent-red);
     }
 
-    /* 16x9 Full-Width Showreel Container */
-    .showreel-wrapper {
-      max-width: var(--max-width);
-      margin: 0 auto 5rem auto;
-      padding: 0 2rem;
-    }
-
-    .showreel-frame {
+    /* Full-Screen / Full-Slide Custom MP4 Background Video */
+    .video-hero-section {
       position: relative;
       width: 100%;
-      aspect-ratio: 16/9;
-      background: #0d0d0d;
-      border-radius: 6px;
+      height: 85vh; /* Takes up full screen height under hero */
+      min-height: 500px;
+      background: #000000;
       overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: flex-end;
     }
 
-    .showreel-frame iframe {
+    .bg-video-element {
+      position: absolute;
+      top: 50%;
+      left: 50%;
       width: 100%;
       height: 100%;
-      border: none;
+      object-fit: cover;
+      transform: translate(-50%, -50%);
+      z-index: 1;
     }
 
-    .showreel-controls {
+    .video-overlay-tint {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.3) 100%);
+      z-index: 2;
+    }
+
+    .video-hero-content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      color: #ffffff;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-top: 0.75rem;
-      font-size: 0.8rem;
-      color: var(--text-light);
+      align-items: flex-end;
     }
 
-    .edit-reel-btn {
-      background: none;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 0.3rem 0.6rem;
-      border-radius: 3px;
+    .video-hero-title {
+      font-size: clamp(1.5rem, 4vw, 3rem);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .video-hero-subtitle {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .video-controls-box {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .video-btn {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #ffffff;
+      padding: 0.5rem 1rem;
       font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
       cursor: pointer;
       font-family: inherit;
+      transition: background 0.2s ease;
     }
 
-    .edit-reel-btn:hover {
-      background: #ffffff;
-      color: var(--text-main);
+    .video-btn:hover {
+      background: rgba(255,255,255,0.4);
     }
 
     /* Section Styling */
@@ -221,6 +258,11 @@
     @media (max-width: 850px) {
       .grid-3-col {
         grid-template-columns: 1fr;
+      }
+      .video-hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
       }
     }
 
@@ -420,7 +462,7 @@
     </div>
   </header>
 
-  <!-- Hero Header -->
+  <!-- Hero Branding -->
   <section class="hero">
     <div class="hero-tagline-top">A FEEL FOR STORY. AN EYE FOR CULTURE.</div>
     <div class="brand-red-box">roche sacks</div>
@@ -430,14 +472,25 @@
     </div>
   </section>
 
-  <!-- Full-Width 16x9 Showreel Section -->
-  <section class="showreel-wrapper">
-    <div class="showreel-frame">
-      <iframe id="heroReelIframe" src="https://player.vimeo.com/video/76979871?autoplay=0&loop=1&autopause=0" allow="autoplay; fullscreen"></iframe>
-    </div>
-    <div class="showreel-controls">
-      <span>DEMO REEL 16:9</span>
-      <button class="edit-reel-btn" onclick="editReelUrl()">[EDIT SHOWREEL URL]</button>
+  <!-- Full-Page MP4 Background Video Section -->
+  <section class="video-hero-section">
+    <video class="bg-video-element" id="bgMp4Video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1920&q=80">
+      <source id="bgMp4Source" src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-sky-in-a-sunset-26070-large.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    
+    <div class="video-overlay-tint"></div>
+
+    <div class="video-hero-content">
+      <div>
+        <h2 class="video-hero-title">Roche Sacks — Showreel</h2>
+        <p class="video-hero-subtitle">Editorial • Commercial • Sound Design</p>
+      </div>
+
+      <div class="video-controls-box">
+        <button class="video-btn" onclick="toggleMuteVideo()" id="muteBtn">[ UNMUTE AUDIO ]</button>
+        <button class="video-btn" onclick="changeMp4Url()">[ EDIT MP4 URL ]</button>
+      </div>
     </div>
   </section>
 
@@ -608,13 +661,30 @@
   </div>
 
   <script>
-    // Edit Showreel URL
-    function editReelUrl() {
-      const current = document.getElementById('heroReelIframe').src;
-      const newUrl = prompt("Paste your Vimeo or YouTube embed URL for the showreel:", current);
+    // Audio Toggle
+    function toggleMuteVideo() {
+      const video = document.getElementById('bgMp4Video');
+      const btn = document.getElementById('muteBtn');
+      if (video.muted) {
+        video.muted = false;
+        btn.innerText = '[ MUTE AUDIO ]';
+      } else {
+        video.muted = true;
+        btn.innerText = '[ UNMUTE AUDIO ]';
+      }
+    }
+
+    // Change Custom MP4 Source
+    function changeMp4Url() {
+      const current = document.getElementById('bgMp4Source').src;
+      const newUrl = prompt("Paste your direct MP4 video link (or upload to GitHub repo as showreel.mp4 and paste 'showreel.mp4'):", current);
       if (newUrl && newUrl.trim() !== "") {
-        document.getElementById('heroReelIframe').src = newUrl.trim();
-        localStorage.setItem('roche_showreel_url', newUrl.trim());
+        const video = document.getElementById('bgMp4Video');
+        const source = document.getElementById('bgMp4Source');
+        source.src = newUrl.trim();
+        video.load();
+        video.play();
+        localStorage.setItem('roche_mp4_url', newUrl.trim());
       }
     }
 
@@ -628,10 +698,10 @@
       }
     }
 
-    // Edit External Video Destination Link
+    // Edit External Link Destination
     function editCardLink(id) {
       const card = document.getElementById('link-' + id);
-      const newLink = prompt("Paste the external video link (Instagram reel, Vimeo, YouTube, State Dept):", card.href);
+      const newLink = prompt("Paste the external video link:", card.href);
       if (newLink && newLink.trim() !== "") {
         card.href = newLink.trim();
         localStorage.setItem('roche_link_' + id, newLink.trim());
@@ -640,9 +710,13 @@
 
     // Load Persisted Data
     window.addEventListener('DOMContentLoaded', () => {
-      const savedReel = localStorage.getItem('roche_showreel_url');
-      if (savedReel) {
-        document.getElementById('heroReelIframe').src = savedReel;
+      const savedMp4 = localStorage.getItem('roche_mp4_url');
+      if (savedMp4) {
+        const video = document.getElementById('bgMp4Video');
+        const source = document.getElementById('bgMp4Source');
+        source.src = savedMp4;
+        video.load();
+        video.play();
       }
 
       const cardIds = ['gov-1', 'gov-2', 'gov-3', 'r29-1', 'r29-2', 'r29-3', 'inf-1', 'inf-2', 'inf-3'];
